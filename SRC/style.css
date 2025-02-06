@@ -1,0 +1,28 @@
+h1 {
+    font-size: 100%;
+    color: blue;
+}
+h2 {
+    font-size: 200%;
+    color: pink;
+    background-color: brown;
+    text-transform: uppercase;
+}
+div {
+    display: block;
+    width: 25%;
+    border: 1px solid;
+    float: left;
+    padding: 3%;
+    border-radius: 25px;
+    border: 20px solid red;
+    margin: 3px;
+}
+footer {
+    clear: both;
+}
+
+h3 {
+    background-color: aquamarine;
+    color: blueviolet;
+}
