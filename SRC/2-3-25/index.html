@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Session 1</title>
+</head>
+<body>
+  <nav>
+    <a href="./index.html">Home</a>
+    <a href="./projects.html">Projects</a>
+    <a href="./about.html">About</a>
+  </nav>
+     <br>
+     <br/>
+
+    <label for = “username”>Username:</label>
+    <input type="text" name="username" required/>
+    <label for="password ">Password:</label>
+    <input type="password" name="password" required >
+    <input type="submit" value="Submit">
+      <br/><br/>
+    <input list="ide">
+    <datalist id="ide">
+    <option value="Visual Studio Code" />
+    <option value="Atom" />
+    <option value="Sublime Text" />
+    </datalist>
+    <br/><br/>
+    <form action="/action_page.php">
+      Country code:
+      <input type="text" name="country_code"
+      pattern="[A-Za-z]{3}"
+      title="Three letter country
+      code">
+      <input type="submit">
+      </form>
+
+    <h1>Home</h1>
+    <p>This is the HOME page</p>
+    <br/>
+
+    <div>
+      <p>Hey</p>
+    </div>
+    <div>
+      <p>Man</p>
+    </div>
+    <div>
+      <p>you</p>
+    </div>
+
+    <form method="post" action="http://server1">
+      Enter your name:
+      <input type="text" name="fname">
+      <br/>
+      Enter your age:
+      <input type="text" name="age">
+      <br/>
+      <input type="submit" value="Submit">
+      </form>
+        <br/>
+      
+      <select name="rental-option">
+        <option value="small">Small</option>
+        <option value="family">Family Sedan</
+        option>
+        <option value="lux">Luxury</option>
+        </select>
+
+
+    <footer>
+        <p>we can say whatever</p>
+        <input type="checkbox" name="breakfast" value="bacon">Bacon <br>
+        <input type="checkbox" name="breakfast" value="eggs">Eggs <br>
+        <input type="checkbox" name="breakfast" value="pancakes">Pancakes <br>
+
+    </footer>
+</body>
+</html>
+
