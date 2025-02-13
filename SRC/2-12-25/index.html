@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Example</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <form>
+        <label for="FirstNumber">First Number</label>
+        <input type="text" name="FirstNumber" id="FirstNumber"/>
+
+        <select id="OperationType">
+            <option>Add</option>
+            <option>Subtract</option>
+            <option>Multiply</option>
+            <option>Divide</option>
+        </select>
+
+        <label>Second Number</label>
+        <input type="text" name="SecondNumber" id="SecondNumber"/>
+
+
+
+    </form>
+    <button onclick="CalculateTwoNumbers()" id="SubmitNumbers">Calculate</button>
+
+    <p>Results: <span id="Result"></span></p>
+
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>
