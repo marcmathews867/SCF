@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Quiz Game</title>
+</head>
+<body>
+    
+</br>
+    <!-- Start Screen -->
+    <div id="StartScreen">
+    <h2>Welcome to the Quiz!</h2>
+    <button id="firstButton" onclick="startQuiz()"><strong>Start</strong></button>
+    </div>
+</br>
+    <h1>Quiz Game</h1>
+
+    <!-- Quiz Screen -->
+    <div id="QuizScreen">
+        <div id="QuestionContainer">
+            <h2 id="Question"></h2>
+            <ul id="Answers"></ul>
+        </div>
+    </div>
+</br>
+    <!--Quit anytime button section-->
+    <div id="QuitButton">
+        <h2>You can QUIT anytime</h2>
+        <button onclick="quitQuiz()"><em>QUIT</em></button>   
+    </div>
+</br>
+    <!--Game Over Screen-->
+    <div id="GameOverScreen">
+        <h2>Game Over!</h2>
+        <p>Your final score is: <span id="FinalScore"></span></p>
+        <button onclick="restartQuiz()">Play Again</button>
+    </div>
+    <!--linking to js file is required at bottom of body tag-->
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+/* Hide quiz and game over screens initially */
+#QuizScreen, #GameOverScreen {
+    display: none; 
+    }
+
+    * {
+        font-family: Helvetica;
+        color: rgba(236, 240, 18, 0.967);
+        background-color: rgba(20, 67, 185, 0.878);   
+        opacity: 0.9;
+        text-align: center;
+    
+        /*reset of browser's default values*/
+        margin: 100;
+        padding: 100;
+    }
+    
+    html {
+        font-size: 22px;
+    }
+
+    #StartScreen {
+        color: rgba(240, 18, 103, 0.347);
+        background-color: rgba(224, 239, 11, 0.878);
+        text-align: center;
+        transform: scale(2.0); /* Makes the button 1.5 times bigger */
+    }
+    
+
+    #QuitButton {
+        color: rgba(240, 18, 103, 0.347);
+        background-color: rgba(245, 10, 65, 0.878);
+        text-align: center;
+        transform: scale(2.0); /* Makes the button 1.5 times bigger */
+    }
+
+    #firstButton {
+        color: rgb(246, 35, 16);
+    }
