@@ -1,0 +1,4 @@
+#CarSelector, SearchCar {
+    display: flex;
+    flex-direction: row;
+}

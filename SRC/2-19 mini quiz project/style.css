@@ -11,19 +11,20 @@
         text-align: center;
     
         /*reset of browser's default values*/
-        margin: 100;
-        padding: 100;
+        margin: 0;
+        padding: 0;
     }
     
     html {
-        font-size: 22px;
+        font-size: 27px;
     }
 
     #StartScreen {
         color: rgba(240, 18, 103, 0.347);
         background-color: rgba(224, 239, 11, 0.878);
-        text-align: center;
+        text-align: left;
         transform: scale(2.0); /* Makes the button 1.5 times bigger */
+        display: inline;
     }
     
 
