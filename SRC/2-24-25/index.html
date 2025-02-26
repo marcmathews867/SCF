@@ -2,34 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- CSS link -->
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+
+    <!-- Input field 4 user 2 input model -->
+    <input type="text" id="carModelInput" placeholder="Input a Car MODEL">
+    <!-- Button 2 trigger  search function when clicked -->
+    <button onclick="searchCarModel()">Search</button>    
+
+    <!-- element to hold dropdown -->
     <form>
+        <!-- label helps user understand -->
         <label for="CarSelector">Select a Car</label>
+        <!-- dropdown menu for car selection; initial = 1 default option -->
         <select name="CarSelector" id="CarSelector">
+            <!-- placeholder option -->
             <option>Change Me</option>
         </select>
     </form>
 
-    <form>
-        <label for="SearchCar">Search for a Car</label>
-        <select name="CarSearch" id="CarSearch">
-            <option>Input</option>
-        </select>
-    </form>
-
+    <!-- displays info of selected car -->
     <div id="CarInfo">
+        <!-- shows selected car make/model -->
         <p id="MakeModel"></p>
         <ul id="CarDetails">
+            <!-- displays specifics of cars -->
             <li id="type">Type: </li>
             <li id="color">Color: </li>
             <li id="tire">Tire: </li>
         </ul>
     </div>
 
+        <!-- JS link - make sure it is correct name -->
     <script type="text/javascript" src="./script.js"></script>
 </body>
 </html>

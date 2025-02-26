@@ -1,4 +1,23 @@
-#CarSelector, SearchCar {
-    display: flex;
-    flex-direction: row;
+
+input, select {
+    padding: 8px; /* Adds spacing inside input box */
+    font-size: 15px; 
+    height: auto fit-content;
+    width: 200px; /* Sets width input field */
+    border: 1px solid #ccc; /* Adds border */
+    border-radius: 5px; /* Rounds corners slightly */
 }
+button, label, p {
+    padding: 8px 16px; /* Adds spacing inside button */
+    font-size: 17px; 
+    background-color: #007bff; 
+    color: white; 
+    border: none; /* Removes default button border */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    border-radius: 5px; /* Rounds button corners */
+    height: auto fit-content;
+}
+button:hover {
+    background-color: #042951; /* Changes button color when hovered */
+}
+
