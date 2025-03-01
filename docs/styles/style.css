@@ -1,97 +1,243 @@
+/* Header Section */
+header {
+    width: 100%;
+    height: 77px;
+    border-bottom: 2px solid seashell;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Keeps header fixed at the top */
+    z-index: 999; /* ensures stays in foreground */
+    background: rgb(69, 3, 3);
+    opacity: 1;
+    top: 0; /* Explicitly define the top position */
+    left: 0; /* Make sure the header is aligned to the left */
+}
+
+header a { 
+    margin: 10px;
+    margin-right: 20px;
+}
+
+header img {
+    height: 67px;
+    margin-left: 15px;
+}
+
 * {
     color: seashell;
-    background-color: black;   
+    background-color: rgb(49, 33, 33);   
     text-align: center;
-
-    /* Reset browser defaults */
     margin: 0;
     padding: 0;
 }
 
 html {
-    font-size: 22px;
+    font-size: 27px;
 }
 
+/* Remove padding from body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    display: flex;
+    overflow-x: hidden;
 }
 
-/* Header Section */
-header {
-    width: 100%;
-    height: 100px;
-    border-bottom: 1px solid seashell;
+/* Main section: set to flex and center the sections */
+main {
+    padding: 120px 20px 20px; /* 120px for header space */
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    z-index: 1;
-    background: black;
-    opacity: 1;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap; /* Allow content to wrap if needed */
 }
 
-header a { 
-    margin: 10px;
-}
-
-header img {
-    height: 93px;
-    margin-left: 10px;
-}
-
-/* Acronym Section */
-.acronym {
+/* Acronym and Project3 sections: equal width */
+#acronym, #project3 {
+    width: 48%; /* Adjust width to fit side by side */
+    min-height: 300px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    height: 100vh;
+}
+
+
+/* Make the acronym section use the full width */
+/* Make the acronym section use the full width */
+#acronym {
+    width: 48%; /* Same width as project3 */
+    min-height: 500px;
+    display: block;
+    z-index: 2; /* Ensure it sits on top of hoverContent */
+}
+
+/* Ensure project3 takes up remaining space */
+#project3 {
     position: relative;
+    z-index: 2; /* Ensure project3 is above hoverContent */
+    width: 48%;  /* Ensure it has a similar width to acronym */
+    min-height: 500px;  /* Ensure it's tall enough */
+    top: -7px; /* Moves it UP by 7px */
+    left: -25px; /* Moves it LEFT by 25px */
+}
+
+#project3 p {
+    text-align: justify;
+    max-width: 90%; /* Adjust width for better formatting */
+    margin: 0 auto; /* Center the text block */
+}
+
+/* Sidebar should be fixed to the left of the screen */
+.sidebar {
+    position: fixed;  /* Use fixed position */
+    left: 0;  /* Align to the left of the page */
+    top: 20%; /* Adjust the vertical position */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 20px;  /* Optional: adjust for spacing */
 }
 
 .sidebar {
-    position: fixed;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    position: fixed;  /* Fixed position to keep it in place */
+    left: 10px;  /* Move it to the right */
+    top: 240px;  /* Move it 50px down from its original position */
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    padding-left: 20px;  /* Optional: adjust for spacing */
 }
 
-.sidebar span {
-    font-weight: bold;
-    font-size: 20px;
-    display: block;
-    cursor: pointer;
+/* Fix Hover Content Alignment */
+.hoverContent {
+    position: absolute;
+    left: 100px;
+    top: calc(50% + 60px); /* Moves the hoverContent down by 150px */
+    transform: translateY(-50%); /* Centers it vertically */
+    width: 600px;
+    height: 520px;
+    display: none;
+    background: url('../images/aboutImage1.jpg') no-repeat center center;
+    background-size: cover; /* Ensures the image covers the area */
+    z-index: 1; /* Keep this behind project3 */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
-/* Initially Hidden Hover Content */
-.hoverAbout {
-    position: fixed;
-    left: 50px; /* Adjust distance from sidebar */
+/* Content wrapper inside the hoverContent */
+.hoverContent .contentWrapper {
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Make text white */
+    text-align: center; /* Center the text */
+    font-size: 24px;
+    z-index: 2; /* Ensure text appears over the image */
+    padding: 20px; /* Adds padding around the text */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+    border-radius: 5px; /* Rounded corners for text background */
+}
+
+.hoverContent > .contentWrapper {
+    width: 100%; /* Ensure the text container spans the full width */
+}
+
+.hoverContent::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: url('../images/aboutImage1.jpg') no-repeat center center;
     background-size: cover;
-    padding: 20px;
-    display: none;
-    width: 200px;
-    height: 150px;
     border-radius: 5px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    opacity: 0.9;
+    z-index: -1; /* Ensure the background stays behind the text */
 }
 
-/* Style for Hover Text */
-.hoverAboutContent p {
-    color: white;
-    font-size: 16px;
-    margin: 5px 0;
+.hoverContent p {
+    position: relative;
+    z-index: 2; /* Ensure text stays on top */
+    color: white; /* To make the text readable against the background */
+    font-size: 24px;
+    text-align: center;
 }
 
-/* Correct Hover Effect */
-.acronym:hover .hoverAbout {
+/* Ensure hover works correctly */
+.sidebar:hover + .hoverContent {
     display: block;
 }
+
+/* Ensuring the body has padding to push everything down */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 80px; /* Adjust based on your header height */
+}
+
+/* Upper Banner - placed just below the header */
+#upperBanner {
+    width: 80%;
+    height: 63px;
+    margin: 0 auto;
+    border-bottom: 1px solid seashell;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: goldenrod;
+    opacity: 0.75;
+    position: absolute; /* Absolute positioning to place it below the header */
+    top: 77px; /* Adjusted to ensure it sits just below the header */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Ensure it doesn't overlap with sidebar */
+}
+
+/* Lower Banner: Full-width, below content */
+#lowerBanner {
+    width: 85%; /* Reduce width by 15% */
+    height: 300px; /* Increased height */
+    margin: 100px auto 0; /* Move it down by 100px and center horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url('../images/contactImage1.webp') no-repeat center center;
+    background-size: cover;
+    opacity: 0.85;
+    position: relative; /* Change from absolute to relative for correct placement */
+    z-index: 1;
+    padding: 10px 0;
+    border-top: 2px solid seashell;
+    border-bottom: 2px solid seashell;
+}
+
+
+#lowerBanner h3,
+#lowerBanner a,
+#lowerBanner p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+    color: seashell;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Add text shadow for better visibility */
+}
+
+
+/* Footer */
+footer {
+    font-size: 0.9rem;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+
 
