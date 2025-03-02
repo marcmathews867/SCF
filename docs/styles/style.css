@@ -6,7 +6,7 @@ header {
     justify-content: space-between;
     align-items: center;
     position: fixed; /* header fixed at top */
-    z-index: 999; /* ensures stays in foreground */
+    z-index: 9999; /* ensures stays in foreground */
     background: rgb(69, 3, 3);
     opacity: 1;
     top: 0; /* Explicitly defines top position */
@@ -48,6 +48,7 @@ main {
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
+    z-index: 1; /* Ensures content stays behind the header */
     flex-wrap: wrap; /* Allow content wrapping if needed */
 }
 
@@ -68,7 +69,8 @@ main {
     width: 48%; /* Same width as project3 */
     min-height: 500px;
     display: block;
-    z-index: 2; /* Ensure it sits on top of hoverContent */
+    position: relative;
+    z-index: 1000; /* Ensure it sits on top of hoverContent */
 }
 
 /* Ensure project3 takes up remaining space */
@@ -90,96 +92,91 @@ main {
 }
 
 .sidebar {
-    position: fixed; 
-    left: 0;  /* Align to left of page */
-    top: 20%; /* Adjust vertical position */
+    position: fixed;  /* Keeps it fixed to the left */
+    left: 10px;       /* Ensure it stays on the left */
+    top: 240px;       /* Move it down from the top */
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding-left: 20px;  /* adjust for spacing */
-}
-
-.sidebar {
-    position: fixed;  /* keeps in place */
-    left: 10px;  /* Move it to right */
-    top: 240px;  /* Move it down from its original position */
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding-left: 20px;  /* adjust for spacing */
+    padding-left: 20px;
+    z-index: 1000;
 }
 
 .hoverContent {
-    position: absolute;
+    position: absolute;  /* Position it relative to the sidebar */
+    left: 10px;          /* Move it left from the sidebar (110px to the left) */
+    top: 205px;            /* Move it 10px down */
+    transform: none;      /* Ensure there's no transform being applied */
+    display: none;        /* Initially hidden */
+    min-width: 250px;     /* Ensure enough width */
+    padding: 10px;
+    background-color: transparent !important;  /* Remove any background */
+    box-shadow: none !important;  /* Remove box shadow */
+    z-index: 9999;
+}
+
+.aboutWrapper, .contactWrapper {
+    display: block; /* Change from none to block */
+    position: relative;
+    padding: 180px 180px;
+    text-align: center;
+    background-color: transparent !important;  /* Remove background color */
+    box-shadow: none !important;  /* Remove any unwanted box shadow */
+    border-radius: 5px;
+    color: seashell;
+    font-size: 24px;
+    align-items: center; /* Center vertically */
+}
+
+.aboutWrapper {
     left: 100px;
-    top: calc(50% + 60px); 
-    transform: translateY(-50%); /* Centers it vertically */
+    top: calc(50% + 60px);
+    transform: translateY(-50%);
     width: 600px;
     height: 520px;
-    display: none;
     background: url('../images/aboutImage1.jpg') no-repeat center center;
-    background-size: cover; /* Ensures image covers the area */
-    z-index: 1; /* Keep this behind project3 */
+    background-size: cover;
+    z-index: 1;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
 
-/* Content wrapper inside the hoverContent */
-.hoverContent .contentWrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; /* Make text white */
-    text-align: center; /* Centers text */
-    font-size: 24px;
-    z-index: 2; /* Ensure text appears over image */
-    padding: 20px; /* Adds padding around text */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
-    border-radius: 5px; /* Rounded corners for text background */
-}
-
-.hoverContent > .contentWrapper {
-    width: 100%; /* Ensure the text container spans full width */
-}
-
-#project3 .hoverContent::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('../images/aboutImage1.jpg') no-repeat center center;
+.contactWrapper {
+    left: 100px;
+    top: calc(50% + 60px);
+    transform: translateY(-50%);
+    width: 600px;
+    height: 520px;
+    background: url('../images/contactImage2.jpg') no-repeat center center;
     background-size: cover;
-    border-radius: 5px;
-    z-index: -1; /* Ensure the background stays behind the text */
-}
-
-#contactInfo .hoverContent::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: none; /* Reset any background image */
-    background: url('../images/contactImage2.jpg') no-repeat center center !important;
-    background-size: cover;
-    border-radius: 5px;
-    z-index: -1; /* Ensure the background stays behind the text */
+    z-index: 1;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
 .hoverContent p {
     position: relative;
-    z-index: 2; /* Ensure text stays on top */
-    color: white; /* To make the text readable against the background */
+    z-index: 2;
+    color: white;
     font-size: 24px;
     text-align: center;
+    z-index: 9999;
 }
 
-.sidebar:hover + .hoverContent {
-    display: block;
+.sidebar::before {
+    display: none !important;
+}
+
+.sidebar .hoverContent::before,
+.sidebar .hoverContent::after {
+    display: none !important;
+}
+
+.sidebar:hover .hoverContent {
+    display: block; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Ensuring the body has padding to push everything down */
@@ -211,6 +208,7 @@ body {
     width: 100%;
     margin-left: 0; /* Removes any left margin */
     margin-right: 0; /* Removes any right margin */
+    z-index: 999; /* Ensure it's on top of other content but below hover info */
 }
 
 /* Lower Banner - Full-width, below content */
