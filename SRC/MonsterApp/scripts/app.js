@@ -1,5 +1,7 @@
+// abilitiesUL - imageContainerDIV - pokemonTextINPUT - searchingBUTTON
+
 const abilitiesUL = document.getElementById("abilities");
-const spritesDIV = document.getElementById("imageContainer");
+const imageContainerDIV = document.getElementById("imageContainer");
 
 fetch('https://pokeapi.co/api/v2/pokemon/eevee')
   .then(response => response.json()) // Convert response to JSON
@@ -14,22 +16,21 @@ function buildAbilitiesList(abilities){
         let li = document.createElement("li");
         li.innerHTML = element.ability.name;
         abilitiesUL.appendChild(li);
-        //console.log(element.ability.name);
     });
 }
 
 function showSelectionImages(sprites){
     let image = document.createElement("img");
     image.src = sprites.front_default;
-    spritesDIV.appendChild(image);
+    imageContainerDIV.appendChild(image);
 }
         
 //Create a text field and button that allows the user to display results for a Pokemon they searched for. Hint - this means no longer hard coding a search for eevee and instead using a variable that contains the users input and fires when clicked
-const searchButton = document.getElementById("searchButton");
-const pokemonInput = document.getElementById("pokemonInput");
+const searchingBUTTON = document.getElementById("searching");
+const pokemonTextINPUT = document.getElementById("pokemonText");
 
-searchButton.addEventListener("click", () => {
-    const pokemonName = pokemonInput.value.toLowerCase().trim(); // Get user input and format it
+searchingBUTTON.addEventListener("click", () => {
+    const pokemonName = pokemonTextINPUT.value.toLowerCase().trim(); // Get user input and format it
     if (pokemonName) {
         fetchPokemonData(pokemonName);
     } else {
@@ -47,7 +48,7 @@ function fetchPokemonData(pokemon) {
         })
         .then(data => {
             abilitiesUL.innerHTML = ""; // Clear previous abilities
-            spritesDIV.innerHTML = ""; // Clear previous image
+            imageContainerDIV.innerHTML = ""; // Clear previous image
             buildAbilitiesList(data.abilities);
             showSelectionImages(data.sprites);
         })
