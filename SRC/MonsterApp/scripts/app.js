@@ -1,61 +1,51 @@
-// abilitiesUL - imageContainerDIV - pokemonTextINPUT - searchingBUTTON
-
 const abilitiesUL = document.getElementById("abilities");
-const imageContainerDIV = document.getElementById("imageContainer");
+const imageContainer = document.getElementById("imageContainer");
+const monsterSelect = document.getElementById("SelectMonster");
 
-fetch('https://pokeapi.co/api/v2/pokemon/eevee')
+function GetOneMonster(monster){
+  fetch('https://pokeapi.co/api/v2/pokemon/' + monster)
   .then(response => response.json()) // Convert response to JSON
   .then(data => {
-    buildAbilitiesList(data.abilities); // Log the data
-    showSelectionImages(data.sprites);
-  })
+    BuildAbilitiesList(data.abilities);
+    ShowSelectionImages(data.sprites);
+  }) // Log the data
   .catch(error => console.error('Error:', error)); // Catch and log any errors
-
-function buildAbilitiesList(abilities){
-    abilities.forEach(element => {
-        let li = document.createElement("li");
-        li.innerHTML = element.ability.name;
-        abilitiesUL.appendChild(li);
-    });
 }
 
-function showSelectionImages(sprites){
-    let image = document.createElement("img");
-    image.src = sprites.front_default;
-    imageContainerDIV.appendChild(image);
-}
-        
-//Create a text field and button that allows the user to display results for a Pokemon they searched for. Hint - this means no longer hard coding a search for eevee and instead using a variable that contains the users input and fires when clicked
-const searchingBUTTON = document.getElementById("searching");
-const pokemonTextINPUT = document.getElementById("pokemonText");
+fetch('https://pokeapi.co/api/v2/pokemon/')
+  .then(response => response.json()) // Convert response to JSON
+  .then(data => BuildMonsterSelectOptions(data.results)) // Log the data
+  .catch(error => console.error('Error:', error)); // Catch and log any
 
-searchingBUTTON.addEventListener("click", () => {
-    const pokemonName = pokemonTextINPUT.value.toLowerCase().trim(); // Get user input and format it
-    if (pokemonName) {
-        fetchPokemonData(pokemonName);
-    } else {
-        alert("Please enter a Pokémon name!");
-    }
+function BuildAbilitiesList(abilities){
+  abilitiesUL.innerHTML = "";
+  abilities.forEach(element => {
+    let li = document.createElement("li");
+    li.innerHTML = element.ability.name;
+    abilitiesUL.appendChild(li);
+  });
+}
+
+function ShowSelectionImages(sprites){
+  imageContainer.innerHTML = "";
+  let image = document.createElement("img");
+  image.src = sprites.front_default;
+  imageContainer.appendChild(image);
+}
+
+function BuildMonsterSelectOptions(monsterOptions){
+  monsterOptions.forEach(element => {
+    let option = document.createElement("option");
+    option.innerHTML = element.name;
+    option.value = element.name;
+    monsterSelect.appendChild(option);
+  });
+}
+
+monsterSelect.addEventListener("change", (event) => {
+  GetOneMonster(event.target.value);
 });
 
-function fetchPokemonData(pokemon) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Pokémon not found");
-            }
-            return response.json();
-        })
-        .then(data => {
-            abilitiesUL.innerHTML = ""; // Clear previous abilities
-            imageContainerDIV.innerHTML = ""; // Clear previous image
-            buildAbilitiesList(data.abilities);
-            showSelectionImages(data.sprites);
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Pokémon not found! Please try another name.");
-        });
-}
-
-
+//The wrong way
+//let data = fetch('https://pokeapi.co/api/v2/pokemon/eevee');
+//console.log(data);

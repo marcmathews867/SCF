@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- CSS link -->
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +19,9 @@
     <!-- element to hold dropdown -->
     <form>
         <!-- label helps user understand -->
-        <label for="CarSelector">Select a Car</label>
+        <label for="CarSelector" class="btn btn-info">Select a Car</label>
         <!-- dropdown menu for car selection; initial = 1 default option -->
-        <select name="CarSelector" id="CarSelector">
+        <select name="CarSelector" id="CarSelector" class="dropdown dropend">
             <!-- placeholder option -->
             <option>Change Me</option>
         </select>
@@ -28,12 +30,12 @@
     <!-- displays info of selected car -->
     <div id="CarInfo">
         <!-- shows selected car make/model -->
-        <p id="MakeModel"></p>
-        <ul id="CarDetails">
+        <p id="MakeModel" class="container p-5 my-5 bg-dark text-white"></p>
+        <ul id="CarDetails" class="list-group">
             <!-- displays specifics of cars -->
-            <li id="type">Type: </li>
-            <li id="color">Color: </li>
-            <li id="tire">Tire: </li>
+            <li id="type" class="list-group-item list-group-item-success">Type: </li>
+            <li id="color" class="list-group-item list-group-item-info">Color: </li>
+            <li id="tire" class="list-group-item list-group-item-primary">Tire: </li>
         </ul>
     </div>
 
