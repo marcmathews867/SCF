@@ -1,9 +1,7 @@
 h1 {
-    color: red;
-}
-
-button {
-    outline:auto;
+    font-size: 200%;
+    color: blue;
+    margin: 10px;
 }
 
 #HomeSelect{

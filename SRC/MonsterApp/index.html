@@ -13,21 +13,25 @@
 </head>
 
 <body>
-    <h1>Monster Fight!</h1>
-    <p>Choose Monsters and see them fight.</p>
+    <div id="HomeSelect">
+        <h1>Monster Fight!</h1>
+        <p>Choose Monsters and see them fight.</p>
+        <button id="Slot1" class="btn btn-primary">Slot 1</button>
+        <div id="Slot1Selection"></div>
+        <button id="Slot2" class="btn btn-primary">Slot 2</button>
+        <div id="Slot2Selection"></div>
+    </div>
     
-    <form>
-        <label for="SelectMonster">Select Monster</label>
-        <select name="SelectMonster" id="SelectMonster">
-        </select>
-    </form>
-    <ul id="abilities"></ul>
-    <div id="imageContainer"></div>
-
-    <input type="text" id="pokemonText" placeholder="Enter Pokémon name">
-    </br>
-    <button id="searching">Search</button>
-
-    
+    <div id="SelectPokemon">
+        <div id="SelectMonster">
+            <h2 id="pokemonName"></h2>
+            <p id="pokemonType"></p>
+            <ul id="stats"></ul>
+            <ul id="abilities"></ul>
+            <div id="imageContainer"></div>
+        </div>
+    </div>
     <script type="text/javascript" src="./scripts/app.js"></script>
 </body>
+</html>
+
