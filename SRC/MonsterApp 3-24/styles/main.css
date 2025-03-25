@@ -1,0 +1,22 @@
+h1 {
+    font-size: 200%;
+    color: blue;
+    margin: 10px;
+}
+
+#HomeSelect{
+    visibility: visible;
+}
+
+#SelectPokemon{
+    visibility: hidden;
+    display:none;
+}
+
+#FightPokemon{
+    visibility: hidden;
+    display:none;
+}
+
+.app-panel{
+}
