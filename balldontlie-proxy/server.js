@@ -1,49 +1,36 @@
-const fetch = require('node-fetch'); // Importing fetch
-
-// Set up Express
 const express = require('express');
+const fetch = require('node-fetch'); // still needed for Node v14–17 or older
+
 const app = express();
 const port = 3000;
 
-// Your BallDon'tLie API key (replace with your actual key)
-const API_KEY = 'YOUR_API_KEY'; // Ensure you replace this with your actual API key
+// ✅ Replace this with your actual API key
+const API_KEY = '2b1f9436-1cba-449d-baca-af62713ec816';
 
-// Route to get games data for a specific date
-app.get('/games', async (req, res) => {
-  const date = req.query.date; // Get date from query parameter
-  
-  if (!date) {
-    return res.status(400).json({ error: 'Date query parameter is required.' });
-  }
-
+app.get('/api/live-scores', async (req, res) => {
   try {
-    console.log(`Fetching data for date: ${date}`);
-    
-    // Making the fetch request to BallDon'tLie API
-    const response = await fetch(`https://www.balldontlie.io/api/v1/games?dates[]=${date}`, {
+    const response = await fetch('https://api.balldontlie.io/v1/box_scores/live', {
       headers: {
-        Authorization: `Bearer ${API_KEY}` // Add authorization header with your API key
+        Authorization: `Bearer ${API_KEY}`, // ✅ Send API key correctly
       }
     });
-    
-    // Check if the response is okay (status code 200)
+
     if (!response.ok) {
-      const errorMessage = await response.text(); // Get the error message from the response
-      console.log('Error Response:', errorMessage); // Log the error
+      const errorMessage = await response.text();
+      console.error('Error from BallDontLie API:', errorMessage);
       return res.status(response.status).json({ error: errorMessage });
     }
 
-    const data = await response.json(); // Parse the response to JSON
-    console.log('Fetched Data:', data); // Log the data received from the API
-    res.json(data); // Send the data to the client
-
+    const data = await response.json();
+    res.json(data);
   } catch (error) {
-    console.error('Error fetching or parsing:', error); // Log any errors that occur
+    console.error('Error fetching or parsing:', error);
     res.status(500).json({ error: 'Error fetching data from API.' });
   }
 });
 
-// Start the server
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`✅ Proxy server running at http://localhost:${port}`);
 });
+
+

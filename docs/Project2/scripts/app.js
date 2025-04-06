@@ -1,70 +1,64 @@
-const API_KEY = "2b1f9436-1cba-449d-baca-af62713ec816"; // Replace with your actual API key
-
-// Function to fetch today's NBA games
-async function getGames() {
-    let today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
-    let url = `https://www.balldontlie.io/api/v1/games?dates[]=${today}`; // API endpoint for today's games
+// Function to fetch live NBA box scores from your local proxy
+async function getLiveScores() {
+    const url = 'http://localhost:3000/api/live-scores';
 
     try {
         // Check if we have recently fetched data stored locally
-        let cachedData = localStorage.getItem("gamesData");
+        let cachedData = localStorage.getItem("liveScoresData");
         let lastFetch = localStorage.getItem("lastFetchTime");
         let now = Date.now();
 
-        // If cached data is less than 1 minute old, use it instead of making a new API request
         if (cachedData && lastFetch && now - lastFetch < 60000) {
-            console.log("Using cached data"); // Log message in console
+            console.log("Using cached live data from localStorage");
             displayGames(JSON.parse(cachedData));
             return;
         }
 
-        console.log("Fetching new data from API..."); // Log message in console
+        console.log("Fetching live data from proxy server...");
+        const response = await fetch(url);
 
-        // Fetch data from the API with API key included in headers
-        let response = await fetch(url, {
-            headers: {
-                "Authorization": `Bearer ${API_KEY}` // Send API key in request header
-            }
-        });
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
 
-        let data = await response.json();
+        const data = await response.json();
 
-        // Store the data in local storage to prevent excessive API calls
-        localStorage.setItem("gamesData", JSON.stringify(data));
+        // Save to local storage
+        localStorage.setItem("liveScoresData", JSON.stringify(data));
         localStorage.setItem("lastFetchTime", now);
 
-        // Display the game data on the webpage
+        // Display on page
         displayGames(data);
 
-        // Log the raw API response in the console for inspection
-        console.log("API Response:", data);
-
+        console.log("Live API Response:", data);
     } catch (error) {
-        console.error("Error fetching games:", error); // Log any errors to the console
+        console.error("Error fetching live scores:", error);
+        document.getElementById("game-list").innerHTML = `<li>Error fetching data.</li>`;
     }
 }
 
-// Function to display game data in the HTML list
+// Function to display live scores
 function displayGames(data) {
-    let gameList = document.getElementById("game-list"); // Get the <ul> element
-    gameList.innerHTML = ""; // Clear existing content
+    const gameList = document.getElementById("game-list");
+    gameList.innerHTML = "";
 
-    // If there are no games today, display a message
-    if (data.data.length === 0) {
-        gameList.innerHTML = "<li>No games today.</li>";
+    const games = data.data || [];
+
+    if (games.length === 0) {
+        gameList.innerHTML = "<li>No live games right now.</li>";
         return;
     }
 
-    // Loop through each game and create a list item for it
-    data.data.forEach(game => {
-        let gameItem = document.createElement("li");
-        gameItem.textContent = `${game.home_team.full_name} vs. ${game.visitor_team.full_name} - Score: ${game.home_team_score} - ${game.visitor_team_score}`;
-        gameList.appendChild(gameItem);
+    games.forEach(game => {
+        const item = document.createElement("li");
+        item.textContent = `${game.game.home_team.full_name} vs. ${game.game.visitor_team.full_name} — Score: ${game.home_team_score} - ${game.visitor_team_score}`;
+        gameList.appendChild(item);
     });
 }
 
-// Call the function when the page loads
-getGames();
+// Call it on page load
+getLiveScores();
 
-// Refresh game data every 60 seconds (60000 milliseconds)
-setInterval(getGames, 60000);
+// Refresh every 60 seconds
+setInterval(getLiveScores, 60000);
+
