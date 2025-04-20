@@ -37,20 +37,16 @@
       <div class="col-md-6">
         <h3>GAMES</h3>
         <div id="games-container" class="d-flex flex-column gap-3">
-          <ul id="game-list">Loading games...</ul>
-        </div>
+          <ul id="nba-game-list" class="game-list">Loading NBA games...</ul>
+          <ul id="mlb-game-list" class="game-list d-none">Loading MLB games...</ul>
+        </div>        
       </div>
       <div class="col-md-6">
         <h3>TEAMS</h3>
-        <div id="teams-container" class="d-flex flex-column gap-2">
-          <!-- Team links will be populated here -->
+        <div id="teams-container">
+          <!-- Team logos will be populated here -->
         </div>
-        <div id="team-info" class="mt-3 border p-3 d-none">
-          <!-- Team info dynamically loaded -->
-          <button class="btn btn-secondary mt-2" onclick="hideTeamInfo()">[B] Back</button>
-        </div>
-      </div>
-    </div>
+      </div>            
 
     <!-- PLAYER SECTION -->
     <div class="row text-center mb-4">
@@ -61,17 +57,19 @@
         </div>
         <div id="featured-player-info" class="mt-3 border p-3 d-none">
           <!-- Featured player detail -->
+          <div class="text-center">
+            <img id="playerImage" src="" alt="Player Headshot" class="img-fluid rounded mb-2" style="max-height: 150px;">
+            <p id="playerName" class="fw-bold"></p>
+          </div>
           <button class="btn btn-secondary mt-2" onclick="hideFeaturedPlayer()">[B] Back</button>
-        </div>
+        </div>        
       </div>
+      <!-- Team info SECTION -->
       <div class="col-md-6">
-        <h3>Team Players</h3>
-        <div id="team-players" class="d-flex flex-column gap-2">
-          <!-- Team player list -->
-        </div>
-        <div id="team-player-list" class="mt-3 border p-3 d-none">
-          <!-- All players for a team -->
-          <button class="btn btn-secondary mt-2" onclick="hideTeamPlayerList()">[B] Back</button>
+        <h3>Team Info</h3>
+        <div id="team-info" class="mt-3 border p-3 d-none">
+          <!-- Team info dynamically loaded -->
+          <button class="btn btn-secondary mt-2" onclick="hideTeamInfo()">[B] Back</button>
         </div>
       </div>
     </div>
@@ -87,5 +85,9 @@
 
 </body>
 </html>
+
+
+
+
 
 

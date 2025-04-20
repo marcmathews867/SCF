@@ -55,3 +55,45 @@ app.listen(PORT, () => {
 });
 
 
+
+// Featured Player Info Proxy
+app.get('/api/player/:id', async (req, res) => {
+  const playerId = req.params.id;
+  const url = `https://api.balldontlie.io/v1/players/${playerId}`;
+
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        'Authorization': "2b1f9436-1cba-449d-baca-af62713ec816"
+      }
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error('Player API error:', error.response?.data || error.message);
+    res.status(error.response?.status || 500).json({ error: 'Failed to fetch player info' });
+  }
+});
+
+
+// Team Info Endpoint Proxy
+app.get('/api/team/:id', async (req, res) => {
+  const teamId = req.params.id;
+  const url = `https://api.balldontlie.io/v1/teams/${teamId}`;
+
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        'Authorization': "2b1f9436-1cba-449d-baca-af62713ec816"
+      }
+    });
+    res.json(response.data); // Send data back to the frontend
+  } catch (error) {
+    console.error('Team API error:', error.response?.data || error.message);
+    res.status(error.response?.status || 500).json({ error: 'Failed to fetch team info' });
+  }
+});
+
+
+
+
+
