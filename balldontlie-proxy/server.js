@@ -76,7 +76,7 @@ app.get('/api/player/:id', async (req, res) => {
 
 
 // Team Info Endpoint Proxy
-app.get('/api/team/:id', async (req, res) => {
+app.get('/api/teams/:id', async (req, res) => {
   const teamId = req.params.id;
   const url = `https://api.balldontlie.io/v1/teams/${teamId}`;
 

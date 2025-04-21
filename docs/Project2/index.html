@@ -17,15 +17,17 @@
 <body>
 
   <!-- HEADER -->
-  <header class="d-flex justify-content-between align-items-center p-3 border-bottom">
-    <img src="images/nbaLogo.jpg" alt="NBA Logo" height="50">
-    <h1 class="text-center">NBA & MLB Games TODAY</h1>
-    <img src="images/mlbLogo.png" alt="MLB Logo" height="50">
+  <header class="d-flex justify-content-between align-items-center p-1 border-bottom bg-warning bg-opacity-25">
+    <img src="images/nbaLogo.jpg" alt="NBA Logo" height="25">
+    <h1 class="text-center">   NBA & MLB ...</h1>
+    <h1 class="text-center"> Games TODAY!!</h1>
+    <img src="images/mlbLogo.png" alt="MLB Logo" height="25">
   </header>
 
   <!-- LEAGUE SELECTOR BAND -->
-  <nav class="bg-light py-2 text-center border-bottom">
+  <nav class="bg-light py-2 d-flex justify-content-center align-items-center gap-3 border-bottom">
     <button id="nba-link" class="btn btn-outline-primary mx-2">NBA</button>
+    <h5 class="text-center"><em>Emphasis: NBA Playoffs</em></h5>
     <button id="mlb-link" class="btn btn-outline-danger mx-2">MLB</button>
   </nav>
 
@@ -42,7 +44,7 @@
         </div>        
       </div>
       <div class="col-md-6">
-        <h3>TEAMS</h3>
+        <h3>Teams - CLICK Logos!</h3>
         <div id="teams-container">
           <!-- Team logos will be populated here -->
         </div>
@@ -77,10 +79,10 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="d-flex justify-content-between align-items-center p-3 border-top">
-    <img src="images/basketballPic.jpg" alt="Basketball Pic" height="40">
+  <footer class="d-flex justify-content-between align-items-center p-1 border-top bg-warning bg-opacity-25">
+    <img src="images/basketballPic.jpg" alt="Basketball Pic" height="7">
     <p class="m-0">Data from Ball Don't Lie API — <a href="https://www.balldontlie.io" target="_blank">API Docs</a></p>
-    <img src="images/baseballPic.png" alt="Baseball Pic" height="40">
+    <img src="images/baseballPic.png" alt="Baseball Pic" height="7">
   </footer>
 
 </body>
