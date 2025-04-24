@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css" />
+  <title>Dexie CRUD Demo</title>
+  <script src="https://unpkg.com/dexie@3.2.3/dist/dexie.min.js"></script>
+</head>
+
+<body>
+    <h1>Dexie.js CRUD Demo</h1>
+  
+    <!-- Form input section -->
+    <input type="text" id="itemInput" placeholder="Enter item..." />
+    <button onclick="addItem()">Add Item</button>
+  
+    <br><br>
+  
+    <!-- Control buttons -->
+    <button onclick="readItems()">Read Items</button>
+    <button onclick="updateFirstItem()">Update First</button>
+    <button onclick="deleteFirstItem()">Delete First</button>
+  
+    <table id="itemsTable" border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be inserted here dynamically -->
+        </tbody>
+      </table>      
+
+    <!-- Output display -->
+    <pre id="output"></pre>
+  
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>

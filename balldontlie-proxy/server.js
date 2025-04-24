@@ -20,7 +20,7 @@ app.get('/api/nba-games', async (req, res) => {
   try {
     const response = await axios.get(url, {
       headers: {
-        'Authorization': API_KEY // ✅ Corrected: No 'Bearer' prefix
+        'Authorization': API_KEY // No 'Bearer' prefix
       }
     });
     res.json(response.data); // Send data back to the frontend
@@ -39,7 +39,7 @@ app.get('/api/mlb-games', async (req, res) => {
   try {
     const response = await axios.get(url, {
       headers: {
-        'Authorization': API_KEY // ✅ Corrected: No 'Bearer' prefix
+        'Authorization': API_KEY // No 'Bearer' prefix
       }
     });
     res.json(response.data); // Send data back to the frontend

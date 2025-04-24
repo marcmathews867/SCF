@@ -10,11 +10,11 @@ const mlbGameList = document.getElementById('mlb-game-list');
 const nbaButton = document.getElementById('nba-link');
 const mlbButton = document.getElementById('mlb-link');
 
-// NEW: Select the featured player container
+// Select the featured player container
 const featuredPlayerContainer = document.getElementById('featured-players'); // NEW
 const teamInfoContainer = document.getElementById('team-info');
 
-// NEW: NBA team logos + featured players mapping
+// NBA team logos + featured players mapping
 const nbaTeamAssets = {
   11: { logo: 'rocketsLogo.png', playerId: 458, playerName: 'Fred VanVleet', headshot: 'vanvleetHeadshot.jpg' },
   16: { logo: 'heatLogo.png', playerId: 4, playerName: 'Bam Adebayo', headshot: 'adebayoHeadshot.jpg' },
@@ -36,7 +36,7 @@ const nbaTeamAssets = {
   21: { logo: 'thunderLogo.jpg', playerId: 89, playerName: 'Alex Caruso', headshot: 'carusoHeadshot.jpg' }
 };
 
-// NEW: Function to fetch and display featured player info
+// Function to fetch and display featured player info
 async function showFeaturedPlayer(playerId, teamId) {
   try {
     const response = await fetch(`http://localhost:3000/api/player/${playerId}`); // NEW
