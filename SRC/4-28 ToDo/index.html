@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css" />
+  <title>Dexie CRUD Demo</title>
+  <script src="https://unpkg.com/dexie@3.2.3/dist/dexie.min.js"></script>
+</head>
+
+<body>
+    <h1>My To-Do List</h1>
+
+  <!-- Form will create a new ToDo item -->
+  <div>
+    <h2>Create New ToDo</h2>
+    <input type="text" id="title" placeholder="Title"><br><br>
+    <textarea id="desc" placeholder="Description"></textarea><br><br>
+    <label>
+      <input type="checkbox" id="completed">
+      Completed
+    </label><br><br>
+    <button id="addBtn">Add ToDo</button>
+  </div>
+
+  <hr>
+
+  <!-- Section listing all existing ToDo items -->
+  <div>
+    <h2>All ToDo Items</h2>
+    <ul id="todoList"></ul>
+  </div>
+  
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>

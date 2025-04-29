@@ -20,7 +20,6 @@ async function addItem() {
   input.value = ""; // Clear the input field
 }
 
-
 // Read all items
 async function readItems() {
     const allItems = await db.items.toArray();
@@ -45,7 +44,6 @@ async function readItems() {
     });
   }
   
-
 // Update the first item
 async function updateFirstItem() {
   const first = await db.items.orderBy('id').first();
