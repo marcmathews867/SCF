@@ -2,41 +2,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ToDo List App</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Monster Fighting App</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .todo-item.completed span {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .todo-nav .nav-link.active {
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div id="HomeSelect" class="container-fluid p-5 bg-primary text-white text-center">
-        <h1>Monster Fight!</h1>
-        <p>Choose monsters and see them fight.</p>
-        <button id="Slot1" class="btn btn-primary">Slot 1</button>
-        <div id="Slot1Selection"></div>
-        <button id="Slot2" class="btn btn-primary">Slot 2</button>
-        <div id="Slot2Selection"></div>
-    </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-white">
+          <div class="card-body">
+            <!-- Input Form -->
+            <form id="todoForm" action="javascript:void(0);">
+              <input type="text" id="title" class="form-control mb-2" placeholder="Title" />
+              <input type="text" id="desc" class="form-control mb-2" placeholder="Description" />
+              <button id="addBtn" class="btn btn-primary">Add Task</button>
+            </form>
 
-    <div id="SelectPokemon">
-        <form>
-            <label for="SelectMonster">Select Monster</label>
-            <select name="SelectMonster" id="SelectMonster">
+            <!-- Navigation Tabs -->
+            <ul class="nav nav-pills todo-nav mt-3 mb-3">
+              <li class="nav-item all-task"><a href="#" class="nav-link active" data-filter="all">All</a></li>
+              <li class="nav-item active-task"><a href="#" class="nav-link" data-filter="active">Active</a></li>
+              <li class="nav-item completed-task"><a href="#" class="nav-link" data-filter="completed">Completed</a></li>
+            </ul>
 
-            </select>
-        </form>
-        <ul id="abilities">
-
-        </ul>
-        <div id="imageContainer">
-
+            <!-- Todo List -->
+            <div id="todoList" class="todo-list"></div>
+          </div>
         </div>
-        <button id="BackButton" class="btn btn-primary">Back</button>
-        <button id="SelectButton" class="btn btn-primary">Select</button>
+      </div>
     </div>
-    <script type="text/javascript" src="./app.js"></script>
-    
+  </div>
+
+  <!-- Dexie.js and App Script -->
+  <script src="https://unpkg.com/dexie@3.2.3/dist/dexie.min.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
+
