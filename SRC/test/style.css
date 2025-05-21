@@ -95,7 +95,23 @@ div.button, div.checker, div.radio, div.selector, div.uploader {
     padding: 25px;
     margin-bottom: 20px;
     border: initial;
-    background: #fff;
+    background: #fbf9f9;
     border-radius: calc(.15rem - 1px);
     box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
 }
+
+.todo-item.completed span {
+    text-decoration: line-through;
+    color: gray;
+  }
+
+  .todo-nav .nav-link.active {
+    font-weight: bold;
+  }
+
+  body {
+    background-image: url('./images/toDoImage.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }

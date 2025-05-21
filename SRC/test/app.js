@@ -16,7 +16,7 @@ async function addItem() {
     return;
   }
 
-  await db.items.add({
+  await db.items.add({ //main ADD await line here
     title,
     desc,
     completed: false
@@ -34,7 +34,7 @@ async function displayItems() {
   const container = document.getElementById("todoList");
   container.innerHTML = "";
 
-  let items = await db.items.toArray();
+  let items = await db.items.toArray(); //display items await here = to Array
 
   // Apply filter
   if (currentFilter === 'active') {
@@ -79,13 +79,13 @@ async function displayItems() {
 
 // Toggle completion status
 async function toggleCompleted(id, completed) {
-  await db.items.update(id, { completed });
+  await db.items.update(id, { completed }); // main await UPDATE here
   displayItems();
 }
 
 // Delete task
 async function deleteItem(id) {
-  await db.items.delete(id);
+  await db.items.delete(id); //main await DELETE here
   displayItems();
 }
 
