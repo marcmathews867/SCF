@@ -21,6 +21,8 @@ body {
 }
 
 #addNew {
+    width: 50%;
+    margin: 0 auto; /* Centers it horizontally */
     display: flex;
     background-color: rgba(171, 206, 161, 0.35);
     align-items: center;
@@ -35,3 +37,60 @@ body {
     padding: 6px;
     border-radius: 4px;
 }
+
+.builder {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.builder-controls {
+  width: 80%;
+  height: 150px;
+  background-color: #f1f1f1;
+  border: 2px dashed #abcea1;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.builder-controls button {
+  width: 80%;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #abcea1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.builder-controls button:hover {
+  background-color: #94b98b;
+}
+
+#exercises {
+    display: grid;
+    gap: 15px;
+}
+
+#exercises div {
+    background-color: #e2eede;
+    border: 3px solid #abcea1;
+    padding: 5px;
+    border-radius: 6px;
+    gap: 5px;
+}
+
+.exercise-card .bi {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.exercise-card .bi:hover {
+  color: #0056b3; /* Adjust hover color */
+}
+
