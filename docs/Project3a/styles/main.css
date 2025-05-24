@@ -12,8 +12,8 @@ body {
 }
 
 .app {
-    width: 500px;
-    height: 700px;
+    width: 600px;
+    height: 750px;
     border: 5px solid #abcea1;
     border-radius: 9px;
     padding: 15px;
@@ -42,36 +42,48 @@ body {
   display: flex;
   justify-content: center;
   margin: 20px 0;
+  width: 100%; /* NEW: allow horizontal centering */
+  background-color: rgb(250, 245, 201);
 }
 
 .builder-controls {
-  width: 80%;
-  height: 150px;
+  display: flex;
+  width: 100%;
+  max-width: 550px; /* NEW: cap total width so it centers well */
   background-color: #f1f1f1;
   border: 2px dashed #abcea1;
   border-radius: 8px;
   padding: 20px;
+  margin: 0 auto; /* NEW: center within builder */
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
 }
 
 .builder-controls button {
-  width: 80%;
-  padding: 10px;
-  font-size: 1rem;
+  flex: 1;
+  min-width: 140px; /* NEW: wide enough to prevent word wrapping */
+  max-width: 180px;
+  white-space: nowrap; /* NEW: prevents text from wrapping */
+  padding: 10px 12px;
+  font-size: 0.95rem; /* Slightly smaller text */
   background-color: #abcea1;
-  color: #fff;
+  color: #333;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-align: center;
 }
 
 .builder-controls button:hover {
   background-color: #94b98b;
 }
+
+
 
 #exercises {
     display: grid;
@@ -80,17 +92,26 @@ body {
 
 #exercises div {
     background-color: #e2eede;
-    border: 3px solid #abcea1;
+    border: 2px solid #abcea1;
     padding: 5px;
     border-radius: 6px;
     gap: 5px;
 }
 
-.exercise-card .bi {
+#exercises span {
+  padding: 5px;
+}
+
+.options i {
+  font-size: 1.2rem;
+  color: #444;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
-.exercise-card .bi:hover {
-  color: #0056b3; /* Adjust hover color */
+
+.options i:hover {
+  color: #007bff; /* Blue on hover */
+  transform: scale(1.2);
 }
+
 

@@ -1,117 +1,95 @@
-body{
-    margin-top:20px;
-    background: #f8f8f8;
-}
-
-.todo-nav {
-    margin-top: 10px
-}
-
-.todo-list {
-    margin: 10px 0
-}
-
-.todo-list .todo-item {
-    padding: 15px;
-    margin: 5px 0;
-    border-radius: 0;
-    background: #f7f7f7
-}
-
-.todo-list.only-active .todo-item.complete {
-    display: none
-}
-
-.todo-list.only-active .todo-item:not(.complete) {
-    display: block
-}
-
-.todo-list.only-complete .todo-item:not(.complete) {
-    display: none
-}
-
-.todo-list.only-complete .todo-item.complete {
-    display: block
-}
-
-.todo-list .todo-item.complete span {
-    text-decoration: line-through
-}
-
-.remove-todo-item {
-    color: #ccc;
-    visibility: hidden
-}
-
-.remove-todo-item:hover {
-    color: #5f5f5f
-}
-
-.todo-item:hover .remove-todo-item {
-    visibility: visible
-}
-
-div.checker {
-    width: 18px;
-    height: 18px
-}
-
-div.checker input,
-div.checker span {
-    width: 18px;
-    height: 18px
-}
-
-div.checker span {
-    display: -moz-inline-box;
-    display: inline-block;
-    zoom: 1;
-    text-align: center;
-    background-position: 0 -260px;
-}
-
-div.checker, div.checker input, div.checker span {
-    width: 19px;
-    height: 19px;
-}
-
-div.checker, div.radio, div.uploader {
-    position: relative;
-}
-
-div.button, div.button *, div.checker, div.checker *, div.radio, div.radio *, div.selector, div.selector *, div.uploader, div.uploader * {
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+    background-color: rgb(211, 207, 207);
 }
 
-div.button, div.checker, div.radio, div.selector, div.uploader {
-    display: -moz-inline-box;
-    display: inline-block;
-    zoom: 1;
-    vertical-align: middle;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.card {
-    padding: 25px;
-    margin-bottom: 20px;
-    border: initial;
-    background: #fbf9f9;
-    border-radius: calc(.15rem - 1px);
-    box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
+.app {
+    width: 500px;
+    height: 700px;
+    border: 5px solid #abcea1;
+    border-radius: 9px;
+    padding: 15px;
+    background-color: white;
 }
 
-.todo-item.completed span {
-    text-decoration: line-through;
-    color: gray;
-  }
+#addNew {
+    width: 50%;
+    margin: 0 auto; /* Centers it horizontally */
+    display: flex;
+    background-color: rgba(171, 206, 161, 0.35);
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-  .todo-nav .nav-link.active {
-    font-weight: bold;
-  }
+.fa-plus {
+    background-color: #abcea1;
+    padding: 6px;
+    border-radius: 4px;
+}
 
-  body {
-    background-image: url('./images/toDoImage.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+.builder {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.builder-controls {
+  width: 80%;
+  height: 150px;
+  background-color: #f1f1f1;
+  border: 2px dashed #abcea1;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.builder-controls button {
+  width: 80%;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #abcea1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.builder-controls button:hover {
+  background-color: #94b98b;
+}
+
+#exercises {
+    display: grid;
+    gap: 15px;
+}
+
+#exercises div {
+    background-color: #e2eede;
+    border: 3px solid #abcea1;
+    padding: 5px;
+    border-radius: 6px;
+    gap: 5px;
+}
+
+.exercise-card .bi {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.exercise-card .bi:hover {
+  color: #0056b3; /* Adjust hover color */
+}

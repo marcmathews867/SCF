@@ -25,121 +25,117 @@
 
   <div class="app">
 
-    <h2 class = "text-center mb-2">Reformer Movements</h2>
+    <h1 class = "text-center mb-2">Reformer Movements</h1>
 
     <div id="addNew">
       <span>Add New Exercise</span>
       <i class="fas fa-plus"></i>
     </div>
 
-    <div class="builder">
+    <div class="builder p-4 rounded shadow-sm"> <!-- Optional styling -->
+      <div class="container">
 
-      <div class="builder-controls">
-        <button id="expandBuilderBtn">Expand Builder</button>
-        <button id="showRoutinesBtn">Show Saved Routines</button>
+        <!-- Centered Title -->
+        <h4 class="text-center mb-4">My Routine</h4> <!-- UPDATED: Centered -->
+
+        <!-- List of Added Exercises -->
+        <ul id="routineList" class="list-group mb-4"></ul> <!-- SAME -->
+
+        <!-- Centered Button Row -->
+        <div class="builder-controls justify-content-center gap-2">
+          <button id="showRoutinesBtn" class="btn btn-outline-secondary">Show Routines</button>
+          <button id="clearRoutineBtn" class="btn btn-outline-danger">Clear Routine</button>
+          <button id="saveRoutineBtn" class="btn btn-outline-success">Save Routine</button>
+        </div>
+
       </div>
-
-      <div id="exercise-container">
-      <!-- Cards get added here dynamically -->
-      </div>
-
-      
-
     </div>
+
 
     <h5 class = "text-center my-3">Current Exercises Detailed Below</h5>
 
     <div id="exercises">
-      <div>
-        <span class = "fw-bold">Exercise 1</span>
-        <button class="add-to-routine-btn" data-exercise-id="squat">Add to Routine</button>
 
-        <span>Body Parts</span>
-        <p>Description</p>
+      <div class="card p-3 mb-3">
+        <div class="d-flex justify-content-between align-items-start">
+          <span class="fw-bold">Exercise 1</span>
+          <button class="btn btn-primary btn-sm add-to-routine-btn">Add to Routine</button>
+        </div>
 
-        <span class="options">
-          <i class="fa-solid fa-pen-to-square"></i>
-          <i class="fa-solid fa-trash"></i>
+        <div class="mt-2">
+          <span class="text-muted">Body Parts</span>
+        </div>
+
+        <!-- Resistance and Reps on same line -->
+        <span class="mt-2 d-flex justify-content-center gap-4 flex-wrap">
+          <div>
+            <strong>Resistance:</strong>
+            <span class="badge bg-secondary">Medium</span>
+          </div>
+          <div>
+            <strong>Number of Reps:</strong>
+            <span class="badge bg-secondary">High</span>
+          </div>
         </span>
-      </div>
-      <div>
-        <span>Exercise 2</span>
-        <span>Body Parts</span>
-        <p>Description</p>
 
-        <span class="options">
-          <i class="fa-solid fa-pen-to-square"></i>
-          <i class="fa-solid fa-trash"></i>
+        <div>
+        <p class="mt-2">Description</p>
+        </div>
+
+        <span class="my-2">
+          <img src="images/img1.png" alt="Exercise Image" style="width: 100px; height: 100px;">
         </span>
+
+        <!-- Centered icons -->
+          <span class="options d-flex justify-content-center gap-3 mt-2">
+            <i class="fa-solid fa-pen-to-square" title="Edit Exercise"></i>
+            <i class="fa-solid fa-trash" title="Delete Exercise"></i>
+          </span>
+
       </div>
+
+      <div class="card p-3 mb-3">
+        <div class="d-flex justify-content-between align-items-start">
+          <span class="fw-bold">Exercise 1</span>
+          <button class="btn btn-primary btn-sm add-to-routine-btn">Add to Routine</button>
+        </div>
+
+        <div class="mt-2">
+          <span class="text-muted">Body Parts</span>
+        </div>
+
+        <!-- Resistance and Reps on same line -->
+        <span class="mt-2 d-flex justify-content-center gap-4 flex-wrap">
+          <div>
+            <strong>Resistance:</strong>
+            <span class="badge bg-secondary">Medium</span>
+          </div>
+          <div>
+            <strong>Number of Reps:</strong>
+            <span class="badge bg-secondary">High</span>
+          </div>
+        </span>
+
+        <div>
+        <p class="mt-2">Description</p>
+        </div>
+
+        <span class="my-2">
+          <img src="images/img1.png" alt="Exercise Image" style="width: 100px; height: 100px;">
+        </span>
+
+        <!-- Centered icons -->
+          <span class="options d-flex justify-content-center gap-3 mt-2">
+            <i class="fa-solid fa-pen-to-square" title="Edit Exercise"></i>
+            <i class="fa-solid fa-trash" title="Delete Exercise"></i>
+          </span>
+
+      </div>
+      
 
     </div>
 
   </div>
-
-
-
-
-
-
-
-
-
-
-
-<div class="card mb-4 shadow-sm exercise-card" style="height: 400px;">
-  <div class="d-flex h-100">
-
-    <!-- Left: Text Info (stretching full height) -->
-    <div class="flex-grow-1 p-3 d-flex flex-column justify-content-between">
-      <!-- Top Row -->
-      <div class="d-flex justify-content-between align-items-start">
-        <h5 class="card-title mb-2">Plank Hold</h5>
-        <button class="btn btn-primary btn-sm mx-auto add-to-routine-btn" data-name="Plank Hold">
-          Add to Routine
-        </button>
-      </div>
-
-      <!-- Details -->
-      <div class="row mb-2">
-        <div class="col-sm-4"><strong>Body Part:</strong><br> Core</div>
-        <div class="col-sm-4"><strong>Resistance:</strong><br> Medium</div>
-        <div class="col-sm-4"><strong>Reps:</strong><br> 10–12</div>
-      </div>
-
-      <!-- Description -->
-      <div>
-        <strong>Description:</strong><br>
-        Hold a strong plank position for 30 seconds with core engaged.
-      </div>
-    </div>
-
-    <!-- Middle: Fixed Image -->
-    <div class="d-flex align-items-center justify-content-center" style="width: 400px; height: 400px;">
-      <img src="your-image.png" alt="Plank" style="width: 400px; height: 400px; object-fit: cover;" class="img-thumbnail">
-    </div>
-
-    <!-- Right: Icon Column -->
-    <div class="d-flex flex-column justify-content-center align-items-center px-3" style="width: 60px;">
-      <i class="bi bi-pencil-square text-primary fs-5 mb-3" role="button" title="Edit"></i>
-      <i class="bi bi-trash text-danger fs-5" role="button" title="Delete"></i>
-    </div>
-
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
