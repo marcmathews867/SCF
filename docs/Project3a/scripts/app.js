@@ -10,3 +10,13 @@ document.addEventListener('click', function (e) {
     document.getElementById('routineList').appendChild(li);
   }
 });
+
+document.querySelectorAll('.selectable-image').forEach(img => {
+  img.addEventListener('click', () => {
+    document.querySelectorAll('.selectable-image').forEach(i => i.classList.remove('selected'));
+    img.classList.add('selected');
+    document.getElementById('selectedImageResult').textContent = `Selected: ${img.alt}`;
+    // You can also save img.src to a hidden input for form submission
+  });
+});
+

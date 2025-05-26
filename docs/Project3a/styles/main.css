@@ -112,4 +112,13 @@ body {
   transform: scale(1.2);
 }
 
+.selectable-image {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
 
+.selectable-image.selected {
+  border-color: #007BFF;
+}
