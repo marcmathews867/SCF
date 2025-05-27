@@ -16,13 +16,17 @@ document.querySelectorAll('.selectable-image').forEach(img => {
     document.querySelectorAll('.selectable-image').forEach(i => i.classList.remove('selected'));
     img.classList.add('selected');
     document.getElementById('selectedImageResult').textContent = `Selected: ${img.alt}`;
-    // can also save img.src to a hidden input for form submission
+    selectedImageSrc = img.getAttribute('src');  // track the chosen image
   });
 });
 
 let form = document.getElementById("form");
 let exerciseName = document.getElementById("exerciseName");
 let msg = document.getElementById("msg");
+let bodyParts = document.getElementById("bodyParts");
+let resistance = document.getElementById("resistance");
+let reps = document.getElementById("reps");
+let description = document.getElementById("description");
 
 form.addEventListener('submit', (e)=>{
   e.preventDefault();
@@ -37,5 +41,19 @@ let formValidation = ()=> {
   else {
     console.log('success');
     msg.innerHTML = "";
+    acceptData();
   }
 }
+
+let data = {};
+let selectedImageSrc = "";
+
+let acceptData = () => {
+  data["exerciseName"] = exerciseName.value;
+  data["bodyParts"] = bodyParts.value;
+  data["resistanceOption"] = resistance.value;
+  data["repsOption"] = reps.value;
+  data["description"] = description.value;
+  data["image"] = selectedImageSrc;  // include image selection
+  console.log(data);
+};
