@@ -16,7 +16,26 @@ document.querySelectorAll('.selectable-image').forEach(img => {
     document.querySelectorAll('.selectable-image').forEach(i => i.classList.remove('selected'));
     img.classList.add('selected');
     document.getElementById('selectedImageResult').textContent = `Selected: ${img.alt}`;
-    // You can also save img.src to a hidden input for form submission
+    // can also save img.src to a hidden input for form submission
   });
 });
 
+let form = document.getElementById("form");
+let exerciseName = document.getElementById("exerciseName");
+let msg = document.getElementById("msg");
+
+form.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  formValidation();
+})
+
+let formValidation = ()=> {
+  if (exerciseName.value.trim() === "") {
+    console.log('failure');
+    msg.innerHTML = "Exercise Cannot be Blank";
+  }
+  else {
+    console.log('success');
+    msg.innerHTML = "";
+  }
+}

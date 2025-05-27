@@ -122,3 +122,7 @@ body {
 .selectable-image.selected {
   border-color: #007BFF;
 }
+
+#msg {
+  color: red;
+}
