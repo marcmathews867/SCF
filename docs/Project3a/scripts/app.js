@@ -11,6 +11,26 @@ document.addEventListener('click', function (e) {
   }
 });
 
+document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('add-to-routine-btn')) {
+    // Get the closest card
+    const card = e.target.closest('.card');
+
+    // Get the exercise name from the bold element
+    const nameElement = card.querySelector('.fw-bold');
+    const exerciseName = nameElement ? nameElement.textContent.trim() : '';
+
+    if (!exerciseName) return;
+
+    // Create and append the list item
+    const li = document.createElement('li');
+    li.className = 'list-group-item';
+    li.textContent = exerciseName;
+
+    document.getElementById('routineList').appendChild(li);
+  }
+});
+
 document.querySelectorAll('.selectable-image').forEach(img => {
   img.addEventListener('click', () => {
     document.querySelectorAll('.selectable-image').forEach(i => i.classList.remove('selected'));
@@ -103,7 +123,7 @@ let createExercises = ()=> {
 
         <!-- Centered icons -->
           <span class="options d-flex justify-content-center gap-5 mt-2">
-            <i class="fa-solid fa-pen-to-square" title="Edit Exercise"></i>
+            <i onClick="editExercise(this)" data-bs-toggle="modal" data-bs-target="#form" class="fa-solid fa-pen-to-square" title="Edit Exercise"></i>
             <i onClick="deleteExercise(this)" class="fa-solid fa-trash" title="Delete Exercise"></i>
           </span>
 
@@ -115,6 +135,45 @@ let createExercises = ()=> {
 let deleteExercise = (e)=> {
   e.parentElement.parentElement.remove();
 }
+
+let editExercise = (e) => {
+  let selectedExercise = e.parentElement.parentElement;
+
+  // Exercise Name (inside first span -> first child span)
+  exerciseName.value = selectedExercise.querySelector('.fw-bold').textContent.trim();
+
+  // Body Parts (inside second div, extract the text after the label)
+  let bodyPartsText = selectedExercise.querySelector('.mt-2 span').textContent;
+  bodyParts.value = bodyPartsText.replace('Body Parts: \xa0', '').trim();
+
+  // Resistance and Reps (extract from badges)
+  let badges = selectedExercise.querySelectorAll('.badge');
+  resistance.value = badges[0].textContent.trim();
+  reps.value = badges[1].textContent.trim();
+
+  // Description (strip label)
+  let descriptionText = selectedExercise.querySelector('p').textContent;
+  description.value = descriptionText.replace(/^Description:\s*/, '').trim();
+
+  // Image src
+  let img = selectedExercise.querySelector('img');
+  if (img) {
+    selectedImageSrc = img.getAttribute('src');
+
+    // Highlight the selected image in the picker
+    document.querySelectorAll('.selectable-image').forEach(i => {
+      i.classList.remove('selected');
+      if (i.getAttribute('src') === selectedImageSrc) {
+        i.classList.add('selected');
+        document.getElementById('selectedImageResult').textContent = `Selected: ${i.alt}`;
+      }
+    });
+  }
+
+  // Remove the current card so the updated one can replace it
+  selectedExercise.remove();
+};
+
 
 let resetForm = ()=> {
   exerciseName.value = "";
@@ -135,3 +194,42 @@ let resetForm = ()=> {
   // Clear selected image text
   document.getElementById('selectedImageResult').textContent = '';
 }
+
+// Temporary in-memory array of saved routines
+  const savedRoutines = [];
+
+  // Save Routine
+  document.getElementById('saveRoutineBtn').addEventListener('click', () => {
+    const routineItems = document.querySelectorAll('#routineList li');
+    const routine = [];
+
+    routineItems.forEach(item => routine.push(item.textContent.trim()));
+
+    if (routine.length > 0) {
+      savedRoutines.push(routine); // Save a copy
+      alert('Routine saved!');
+    } else {
+      alert('No exercises to save.');
+    }
+  });
+
+  // Clear Routine
+  document.getElementById('clearRoutineBtn').addEventListener('click', () => {
+    const list = document.getElementById('routineList');
+    list.innerHTML = '';
+  });
+
+  // Show Routines
+  document.getElementById('showRoutinesBtn').addEventListener('click', () => {
+    if (savedRoutines.length === 0) {
+      alert('No saved routines yet.');
+      return;
+    }
+
+    let message = 'Saved Routines:\n\n';
+    savedRoutines.forEach((routine, index) => {
+      message += `Routine ${index + 1}:\n- ${routine.join('\n- ')}\n\n`;
+    });
+
+    alert(message);
+  });

@@ -131,3 +131,9 @@ body {
 #msg {
   color: red;
 }
+
+#routineList .list-group-item {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  line-height: 1.4;
+}
