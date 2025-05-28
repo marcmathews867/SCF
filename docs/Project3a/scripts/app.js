@@ -27,6 +27,7 @@ let bodyParts = document.getElementById("bodyParts");
 let resistance = document.getElementById("resistance");
 let reps = document.getElementById("reps");
 let description = document.getElementById("description");
+let exercises = document.getElementById("exercises");
 
 form.addEventListener('submit', (e)=>{
   e.preventDefault();
@@ -55,5 +56,11 @@ let acceptData = () => {
   data["repsOption"] = reps.value;
   data["description"] = description.value;
   data["image"] = selectedImageSrc;  // include image selection
-  console.log(data);
+  //console.log(data);
+  createExercises();
 };
+
+let createExercises = ()=> {
+  exercises.innerHTML += "Exercise has been updated";
+  
+}
