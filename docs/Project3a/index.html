@@ -55,16 +55,16 @@
             <div style="display: flex; flex-direction: row; gap: 17px; height: 30px">
               <label for="cars">Choose Resistance:</label>
               <select name="resistance" id="resistance">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
               </select>
               
               <label for="cars">Choose Reps:</label>
               <select name="reps" id="reps">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
               </select>
             </div>
             <br>
@@ -161,7 +161,7 @@
         <!-- Centered icons -->
           <span class="options d-flex justify-content-center gap-5 mt-2">
             <i class="fa-solid fa-pen-to-square" title="Edit Exercise"></i>
-            <i class="fa-solid fa-trash" title="Delete Exercise"></i>
+            <i onClick="deleteExercise(this)" class="fa-solid fa-trash" title="Delete Exercise"></i>
           </span>
 
       </div>

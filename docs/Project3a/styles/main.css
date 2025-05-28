@@ -18,6 +18,11 @@ body {
     border-radius: 9px;
     padding: 15px;
     background-color: white;
+    overflow-y: scroll;
+}
+
+.app::-webkit-scrollbar {
+  width: 0 !important;
 }
 
 #addNew {

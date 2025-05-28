@@ -57,10 +57,81 @@ let acceptData = () => {
   data["description"] = description.value;
   data["image"] = selectedImageSrc;  // include image selection
   //console.log(data);
+
   createExercises();
+
+  // Close the Bootstrap modal programmatically
+const modalElement = document.getElementById('form');
+const modalInstance = bootstrap.Modal.getInstance(modalElement);
+if (modalInstance) {
+  modalInstance.hide();
+}
 };
 
 let createExercises = ()=> {
-  exercises.innerHTML += "Exercise has been updated";
-  
+  exercises.innerHTML += `
+  <div class="card p-3 mb-3">
+        <span class="d-flex justify-content-between align-items-start">
+          <span class="fw-bold">${data.exerciseName}</span>
+          <button class="btn btn-primary btn-sm add-to-routine-btn">Add to Routine</button>
+        </span>
+
+        <div class="mt-2">
+          <span><em>Body Parts: &nbsp</em>${data.bodyParts}</span>
+        </div>
+
+        <span class="mt-2 d-flex justify-content-center gap-4 flex-wrap">
+          <span class = "text-secondary">
+            <strong>Spring Resistance:</strong>
+            <span class="badge bg-secondary">${data.resistanceOption}</span>
+          </span>
+          <span class = "text-secondary">
+            <strong>Number of Repetitions:</strong>
+            <span class="badge bg-secondary">${data.repsOption}</span>
+          </span>
+        </span>
+
+        <div>
+          <p class="mt-2"><em>Description:&nbsp</em> ${data.description}</p>
+        </div>
+
+        <span style="display: flex; justify-content: center; align-items: center;">
+          <span class="my-2">
+            <img src="${data.image}" alt="Exercise Image" style="width: 200px; height: 200px; border-radius: 9px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);">
+          </span>
+        </span>
+
+        <!-- Centered icons -->
+          <span class="options d-flex justify-content-center gap-5 mt-2">
+            <i class="fa-solid fa-pen-to-square" title="Edit Exercise"></i>
+            <i onClick="deleteExercise(this)" class="fa-solid fa-trash" title="Delete Exercise"></i>
+          </span>
+
+      </div>
+  `;
+  resetForm();
+}
+
+let deleteExercise = (e)=> {
+  e.parentElement.parentElement.remove();
+}
+
+let resetForm = ()=> {
+  exerciseName.value = "";
+  bodyParts.value = "";
+  resistance.value = "";
+  reps.value = "";
+  description.value = "";
+  selectedImageSrc = "";
+
+  // Hide image picker
+  document.getElementById('imagePicker').style.display = 'none';
+
+  // Deselect any selected images
+  document.querySelectorAll('.selectable-image').forEach(img => {
+    img.classList.remove('selected');
+  });
+
+  // Clear selected image text
+  document.getElementById('selectedImageResult').textContent = '';
 }
