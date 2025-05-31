@@ -1,4 +1,4 @@
-document.addEventListener('click', function (e) {
+/*document.addEventListener('click', function (e) {
   if (e.target.classList.contains('add-to-routine-btn')) {
     const exerciseName = e.target.getAttribute('data-name');
 
@@ -10,6 +10,7 @@ document.addEventListener('click', function (e) {
     document.getElementById('routineList').appendChild(li);
   }
 });
+*/
 
 document.addEventListener('click', function (e) {
   if (e.target.classList.contains('add-to-routine-btn')) {
@@ -233,3 +234,5 @@ let resetForm = ()=> {
 
     alert(message);
   });
+
+  
