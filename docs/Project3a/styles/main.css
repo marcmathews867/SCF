@@ -9,6 +9,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .app {
@@ -136,4 +145,28 @@ body {
   margin: 0;
   padding: 0.5rem 1rem;
   line-height: 1.4;
+}
+
+/* Custom styles for the routines modal - ADD THESE NEW STYLES */
+#routinesModalContent {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.routine-item {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.routine-item h6 {
+  color: #495057;
+  margin-bottom: 8px;
+}
+
+.routine-exercises {
+  font-size: 0.9rem;
+  color: #6c757d;
 }

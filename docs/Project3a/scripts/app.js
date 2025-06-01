@@ -220,7 +220,7 @@ let resetForm = ()=> {
     list.innerHTML = '';
   });
 
-  // Show Routines
+  /*// Show Routines
   document.getElementById('showRoutinesBtn').addEventListener('click', () => {
     if (savedRoutines.length === 0) {
       alert('No saved routines yet.');
@@ -233,6 +233,34 @@ let resetForm = ()=> {
     });
 
     alert(message);
-  });
+  });*/
 
+  // Function to populate the routines modal - ADD THIS NEW FUNCTION
+function populateRoutinesModal() {
+  const modalContent = document.getElementById('routinesModalContent');
   
+  if (savedRoutines.length === 0) {
+    modalContent.innerHTML = '<p class="text-muted text-center">No saved routines found.</p>';
+    return;
+  }
+
+  let html = '';
+  savedRoutines.forEach((routine, index) => {
+    html += `
+      <div class="routine-item">
+        <h6><strong>Routine ${index + 1}</strong></h6>
+        <div class="routine-exercises">
+          <strong>Exercises:</strong> ${routine.join(', ')}
+        </div>
+        <small class="text-muted">${routine.length} exercise${routine.length !== 1 ? 's' : ''}</small>
+      </div>
+    `;
+  });
+  
+  modalContent.innerHTML = html;
+}
+
+// Event listener for when the modal is about to be shown - ADD THIS NEW EVENT LISTENER
+document.getElementById('routinesModal').addEventListener('show.bs.modal', function() {
+  populateRoutinesModal();
+});

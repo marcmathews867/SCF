@@ -102,6 +102,26 @@
       </div>
     </form>
 
+    <!-- Show Routines Modal - ADD THIS NEW MODAL -->
+    <div class="modal fade" id="routinesModal" tabindex="-1" aria-labelledby="routinesModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="routinesModalLabel">Saved Routines</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="routinesModalContent">
+              <!-- Routine content will be inserted here -->
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="builder p-4 rounded shadow-sm"> <!-- Optional styling -->
       <div class="container">
 
@@ -113,7 +133,7 @@
 
         <!-- Centered Button Row -->
         <div class="builder-controls justify-content-center gap-2">
-          <button id="showRoutinesBtn" class="btn btn-outline-secondary">Show Routines</button>
+          <button id="showRoutinesBtn" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#routinesModal">Show Routines</button>
           <button id="clearRoutineBtn" class="btn btn-outline-danger">Clear Routine</button>
           <button id="saveRoutineBtn" class="btn btn-outline-success">Save Routine</button>
         </div>
