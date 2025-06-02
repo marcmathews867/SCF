@@ -1,0 +1,172 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(211, 207, 207);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.app {
+    width: 600px;
+    height: 750px;
+    border: 5px solid #abcea1;
+    border-radius: 9px;
+    padding: 15px;
+    background-color: white;
+    overflow-y: scroll;
+}
+
+.app::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+#addNew {
+    width: 50%;
+    margin: 0 auto; /* Centers it horizontally */
+    display: flex;
+    background-color: rgba(171, 206, 161, 0.35);
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fa-plus {
+    background-color: #abcea1;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.builder {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  width: 100%; /* NEW: allow horizontal centering */
+  background-color: rgb(250, 245, 201);
+}
+
+.builder-controls {
+  display: flex;
+  width: 100%;
+  max-width: 550px; /* NEW: cap total width so it centers well */
+  background-color: #f1f1f1;
+  border: 2px dashed #abcea1;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 0 auto; /* NEW: center within builder */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.builder-controls button {
+  flex: 1;
+  min-width: 140px; /* NEW: wide enough to prevent word wrapping */
+  max-width: 180px;
+  white-space: nowrap; /* NEW: prevents text from wrapping */
+  padding: 10px 12px;
+  font-size: 0.95rem; /* Slightly smaller text */
+  background-color: #abcea1;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.builder-controls button:hover {
+  background-color: #94b98b;
+}
+
+#exercises {
+    display: grid;
+    gap: 15px;
+}
+
+#exercises div {
+    background-color: #e2eede;
+    border: 2px solid #abcea1;
+    padding: 5px;
+    border-radius: 6px;
+    gap: 5px;
+}
+
+#exercises span {
+  padding: 5px;
+}
+
+.options i {
+  font-size: 1.2rem;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.options i:hover {
+  color: #007bff; /* Blue on hover */
+  transform: scale(1.2);
+}
+
+.selectable-image {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.selectable-image.selected {
+  border-color: #007BFF;
+}
+
+#msg {
+  color: red;
+}
+
+#routineList .list-group-item {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  line-height: 1.4;
+}
+
+/* Custom styles for the routines modal - ADD THESE NEW STYLES */
+#routinesModalContent {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.routine-item {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.routine-item h6 {
+  color: #495057;
+  margin-bottom: 8px;
+}
+
+.routine-exercises {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
